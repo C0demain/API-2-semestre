@@ -10,6 +10,6 @@ Projeto de API do 2° semestre
 | Spint 1       |  04/09 | 24/09 |
 | Sprint 2      |  25/09 | 15/10 |
 | Sprint 3      | 16/10  | 05/11 |
-| Sprint 406/11 | 06/11  | 26/11 |
+| Sprint 4      | 06/11  | 26/11 |
 
 </center>
