@@ -26,8 +26,8 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
   
 |Nome|Função|GitHub|Linkedin|
 | -------- |-------- |-------- |-------- |
-|**Mateus  Madeira**|Scrum Master|[@GitHub](https://github.com/mafemad)|[@Linkedin](https://www.linkedin.com/in/mateus-ferreira-madeira)
-|**Pedro Santos**|Product Owner|[@GitHub](https://github.com/kajiyap)|[@Linkedin](https://www.linkedin.com/in/pedro-santos-kajiya-65763b260/)
+|**Mateus Madeira**|Scrum Master|[@GitHub](https://github.com/mafemad)|[@Linkedin](https://www.linkedin.com/in/mateus-ferreira-madeira)
+|**Pedro Kajiya**|Product Owner|[@GitHub](https://github.com/kajiyap)|[@Linkedin](https://www.linkedin.com/in/pedro-santos-kajiya-65763b260/)
 |**Abner Machado**|Desenvolvedor|[@GitHub](https://github.com/abner-machado)|[@Linkedin](https://www.linkedin.com/in/abner-douglas-a70a9b199/)
 |**Bruno Silvério**|Desenvolvedor|[@GitHub](https://github.com/BrunoVieira30)|[@Linkedin](https://www.linkedin.com/in/bruno-vieira-b999a2224/)
 |**Cauã Dezidera**|Desenvolvedor|[@GitHub](https://github.com/CauaDezidera)|[@Linkedin](https://www.linkedin.com/in/cauã-dezidera-375736275/) 
