@@ -16,13 +16,19 @@ import javax.swing.JRadioButton;
 import javax.swing.JSplitPane;
 
 
-public class TelaInicial {
+public class TelaInicial implements ActionListener{
 
 	private JFrame frame;
-
-	/**
-	 * Launch the application.
-	 */
+	private JButton buttomChat;
+	private JButton buttomArquivos;
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		TelaBot telaBot = new TelaBot();
+		telaBot.setVisible(true);
+		frame.dispose();
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,12 +58,13 @@ public class TelaInicial {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton buttomAquivos = new JButton("Aquivos");
-		buttomAquivos.setBounds(64, 186, 125, 43);
-		frame.getContentPane().add(buttomAquivos);
+		buttomArquivos = new JButton("Aquivos");
+		buttomArquivos.setBounds(64, 186, 125, 43);
+		frame.getContentPane().add(buttomArquivos);
 		
-		JButton buttomChat = new JButton("Chat");
+		buttomChat = new JButton("Chat");
 		buttomChat.setBounds(314, 186, 125, 43);
+		buttomChat.addActionListener(this);
 		frame.getContentPane().add(buttomChat);
 	}
 }

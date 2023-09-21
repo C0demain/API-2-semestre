@@ -13,36 +13,25 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
-public class TelaBot extends JFrame {
+public class TelaBot extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaBot frame = new TelaBot();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public void actionPerformed(ActionEvent e) {
+		TelaInicial.main(null);
+		this.dispose();
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public TelaBot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 374, 541);
+		setBounds(100, 100, 374, 591);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -71,15 +60,21 @@ public class TelaBot extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Enviar");
-		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(128, 128, 128));
 		btnNewButton.setBounds(236, 464, 96, 26);
 		contentPane.add(btnNewButton);
 		
+		JButton buttomVoltar = new JButton("Voltar");
+		buttomVoltar.setForeground(new Color(0, 0, 0));
+		buttomVoltar.setBounds(128, 518, 89, 23);
+		buttomVoltar.addActionListener(this);
+		contentPane.add(buttomVoltar);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(128, 128, 128));
 		lblNewLabel.setIcon(new ImageIcon(TelaBot.class.getResource("MicrosoftTeams-image.png")));
-		lblNewLabel.setBounds(0, 0, 358, 513);
+		lblNewLabel.setBounds(0, 0, 358, 552);
 		contentPane.add(lblNewLabel);
 	}
 }
