@@ -1,7 +1,7 @@
 # CodeMain - 2° semestre
 Projeto de API do 2° semestre
 
-##O que é o C0deMain?
+## O que é o C0deMain?
 C0deMain, é um time de desenvolvimento web do 2°Semestre de Análise e Desenvolvimento da FATEC São José dos Campos - Prof. Jessen Vidal. A equipe possui como objetivo principal desenvolver  um  sistema  desktop de um bot que lê e interpreta arquivos, e baseando-se neles fornece respostas a qualquer pergunta.
 
 # Projeto
@@ -10,17 +10,11 @@ C0deMain, é um time de desenvolvimento web do 2°Semestre de Análise e Desenvo
 Como parte da API do 2° semestre do curso de análise e desenvolvimento de sistemas, da faculdade Fatec São José dos Campos, um desafio é proposto aos alunos. O desafio proposto foi a criação de um chat bot utilizando a linguagem de programação java junto da biblioteca [langchain4j](https://github.com/langchain4j), responsável por fazer a leitura, embedding e interpretação do arquivo desejado.
 
 # Cronograma
-<div> 
+<div align="center"> 
   
-|               | Inicio | Fim   |
-|---------------|:------:|-------|
-| Kick-Off      |  21/08 | 28/08 |
-| Spint 1       |  04/09 | 24/09 |
-| Sprint 2      |  25/09 | 15/10 |
-| Sprint 3      | 16/10  | 05/11 |
-| Sprint 4      | 06/11  | 26/11 |
+![backlog](https://github.com/C0demain/API-2-semestre/assets/126246657/a6cbee11-4afa-4634-bce6-b2725c270e40)
 
-<div/>
+</div>
 
 
 ## 👨‍💻 Equipe
@@ -41,6 +35,7 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 <br>  
   
 </div>
+
 ## 🔧 Requisitos funcionais
 
   - Linguagem Java para back-end e front-end (Requisito Fatec);
@@ -51,7 +46,7 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 ## 🔧 Requisitos não funcionais
 
  - Documentação via Github;
- - DER;
+ - DER (Diagrama de entidade relacionamento);
 
 ## 🛠 Tecnologias utilizadas</h2>
 
