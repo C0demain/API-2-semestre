@@ -41,7 +41,7 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 <br>  
   
 </div>
-##🔧 Requisitos funcionais
+## 🔧 Requisitos funcionais
 
   - Linguagem Java para back-end e front-end (Requisito Fatec);
   - Sistema desktop intuitivo, simples e prático para facilitar a absorção do conteúdo;
