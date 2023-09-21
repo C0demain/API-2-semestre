@@ -1,4 +1,4 @@
-package bot;
+package GUI;
 
 import java.awt.EventQueue;
 
@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 
-public class Tela1 extends JFrame {
+public class TelaBot extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +28,7 @@ public class Tela1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tela1 frame = new Tela1();
+					TelaBot frame = new TelaBot();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class Tela1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Tela1() {
+	public TelaBot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 374, 541);
 		contentPane = new JPanel();
@@ -78,7 +78,7 @@ public class Tela1 extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(128, 128, 128));
-		lblNewLabel.setIcon(new ImageIcon(Tela1.class.getResource("/MicrosoftTeams-image.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaBot.class.getResource("MicrosoftTeams-image.png")));
 		lblNewLabel.setBounds(0, 0, 358, 513);
 		contentPane.add(lblNewLabel);
 	}
