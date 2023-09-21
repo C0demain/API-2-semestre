@@ -1,4 +1,4 @@
-package Tela;
+package bot;
 
 import java.awt.EventQueue;
 
