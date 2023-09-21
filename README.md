@@ -1,6 +1,9 @@
 # CodeMain - 2° semestre
 Projeto de API do 2° semestre
 
+##O que é o C0deMain?
+C0deMain, é um time de desenvolvimento web do 2°Semestre de Análise e Desenvolvimento da FATEC São José dos Campos - Prof. Jessen Vidal. A equipe possui como objetivo principal desenvolver  um  sistema  desktop de um bot que lê e interpreta arquivos, e baseando-se neles fornece respostas a qualquer pergunta.
+
 # Projeto
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
 
@@ -38,5 +41,35 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 <br>  
   
 </div>
+## 🔧 Requisitos funcionais
 
+  - Linguagem Java para back-end e front-end (Requisito Fatec);
+  - Sistema desktop intuitivo, simples e prático para facilitar a absorção do conteúdo;
+  - Criar um registro de usuários;
+  - Criar um chatbot capaz de ler, interpretar e responder as mais diversas perguntas.
 
+## 🔧 Requisitos não funcionais
+
+ - Documentação via Github;
+ - DER;
+
+## 🛠 Tecnologias utilizadas</h2>
+
+  - Java
+  - MySQL
+  
+## 🛠 Ferramentas utilizadas</h2>
+
+  - Excel
+  - Power Point
+  - Trello
+  - Figma
+  - Eclipse
+  - Canva
+
+**<h2>🔗 Link para o protótipo desenvolvido no Figma </h2>**
+O protótipo no Figma, foi desenvolvido para receber a aprovação prévia do cliente e para a vizualização do projeto sem que todo o código tenha que ser baixado.<br>
+
+<div align="center">
+<a href="">Clique aqui para acessar o nosso protótipo</a><br>
+</div>
