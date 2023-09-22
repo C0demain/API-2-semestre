@@ -8,7 +8,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JToggleButton;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.JTextField;
 import java.awt.Scrollbar;
 import javax.swing.JMenuBar;
@@ -16,17 +18,35 @@ import javax.swing.JRadioButton;
 import javax.swing.JSplitPane;
 
 
-public class TelaInicial implements ActionListener{
+public class TelaInicial extends JFrame implements ActionListener{
 
 	private JFrame frame;
 	private JButton buttomChat;
 	private JButton buttomArquivos;
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		TelaBot telaBot = new TelaBot();
-		telaBot.setVisible(true);
-		frame.dispose();
+	public TelaInicial() {
+		/* Gera a tela*/
+	initialize();
+	
+	
+	buttomChat.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			TelaBot telaBot = new TelaBot();
+			telaBot.setVisible(true);
+			frame.dispose();
+			}
+		});
+	
+	/*Abre a tela de seleção de arquivo*/
+    buttomArquivos.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+			SeletorArquivoGUI seletor = new SeletorArquivoGUI();
+			seletor.setVisible(true);
+			frame.dispose();        
+			}
+    });
 	}
 	
 	public static void main(String[] args) {
@@ -45,9 +65,6 @@ public class TelaInicial implements ActionListener{
 	/**
 	 * Create the application.
 	 */
-	public TelaInicial() {
-		initialize();
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -58,13 +75,18 @@ public class TelaInicial implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		buttomArquivos = new JButton("Aquivos");
+		buttomArquivos = new JButton("Arquivos");
 		buttomArquivos.setBounds(64, 186, 125, 43);
 		frame.getContentPane().add(buttomArquivos);
 		
 		buttomChat = new JButton("Chat");
 		buttomChat.setBounds(314, 186, 125, 43);
-		buttomChat.addActionListener(this);
 		frame.getContentPane().add(buttomChat);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
