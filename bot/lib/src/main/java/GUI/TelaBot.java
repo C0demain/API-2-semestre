@@ -27,9 +27,12 @@ public class TelaBot extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField pergunta;
+	
+	public static String caminhoArquivo;
 
 	public void actionPerformed(ActionEvent e) {
 		TelaInicial.main(null);
+		TelaInicial.caminhoArquivo = caminhoArquivo;
 		this.dispose();
 	}
 	
@@ -71,9 +74,8 @@ public class TelaBot extends JFrame implements ActionListener{
 		buttomEnviar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				resposta.setText("Aguarde...");
 				try {
-					String resp = Bot.perguntar("FRTC.txt", pergunta.getText());
+					String resp = Bot.perguntar(caminhoArquivo, pergunta.getText());
 					resposta.setText(resp);
 				}catch (RuntimeException err) {
 					resposta.setText("Erro na leitura de arquivo");

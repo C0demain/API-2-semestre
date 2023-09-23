@@ -11,12 +11,15 @@ import dev.langchain4j.retriever.EmbeddingStoreRetriever;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
+
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static dev.langchain4j.data.document.FileSystemDocumentLoader.loadDocument;
 import static java.time.Duration.ofSeconds;
+import java.io.File;
 
 
 
@@ -67,9 +70,10 @@ public class Bot {
         
 	}
 	
-	private static Path toPath(String fileName) {
+	private static Path toPath(String fileName) throws MalformedURLException {
         try {
-            URL fileUrl = Bot.class.getResource(fileName);
+        	File file = new File(fileName);
+            URL fileUrl = file.toURI().toURL();
             return Paths.get(fileUrl.toURI());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

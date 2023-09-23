@@ -24,6 +24,8 @@ public class TelaInicial extends JFrame implements ActionListener{
 	private JButton buttomChat;
 	private JButton buttomArquivos;
 	
+	public static String caminhoArquivo = "";
+	
 	public TelaInicial() {
 		/* Gera a tela*/
 	initialize();
@@ -33,6 +35,7 @@ public class TelaInicial extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			TelaBot telaBot = new TelaBot();
+			TelaBot.caminhoArquivo = caminhoArquivo;
 			telaBot.setVisible(true);
 			frame.dispose();
 			}
@@ -43,6 +46,7 @@ public class TelaInicial extends JFrame implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
 			SeletorArquivoGUI seletor = new SeletorArquivoGUI();
+			SeletorArquivoGUI.caminhoArquivo = caminhoArquivo;
 			seletor.setVisible(true);
 			frame.dispose();        
 			}
