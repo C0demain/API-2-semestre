@@ -66,5 +66,5 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 O protótipo no Figma, foi desenvolvido para receber a aprovação prévia do cliente e para a vizualização do projeto sem que todo o código tenha que ser baixado.<br>
 
 <div align="center">
-<a href="">Clique aqui para acessar o nosso protótipo</a><br>
+<a href="https://www.figma.com/file/aBxTpblWbQ6fk5zt4pifdV/CodeMain-Prototype?type=design&node-id=0%3A1&mode=design&t=0RMEliUANyipNzDm-1">Clique aqui para acessar o nosso protótipo</a><br>
 </div>
