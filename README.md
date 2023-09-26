@@ -62,7 +62,11 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
   - Eclipse
   - Canva
 
-**<h2>🔗 Link para o protótipo desenvolvido no Figma </h2>**
+<h2>Vídeo Sprint Review 1</h2>
+<div align="center">
+<a href="https://youtu.be/SU2rMJp9-ew">Link para o Youtube</a>
+</div>
+<h2>🔗 Link para o protótipo desenvolvido no Figma </h2>
 O protótipo no Figma, foi desenvolvido para receber a aprovação prévia do cliente e para a vizualização do projeto sem que todo o código tenha que ser baixado.<br>
 
 <div align="center">
