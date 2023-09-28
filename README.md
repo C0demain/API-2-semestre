@@ -52,6 +52,7 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 
   - Java
   - MySQL
+  - Gradle
   
 ## 🛠 Ferramentas utilizadas</h2>
 
