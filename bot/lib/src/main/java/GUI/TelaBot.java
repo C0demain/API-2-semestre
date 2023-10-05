@@ -101,7 +101,7 @@ public class TelaBot extends JFrame implements ActionListener{
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(128, 128, 128));
-		lblNewLabel.setIcon(new ImageIcon(TelaBot.class.getResource("MicrosoftTeams-image.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaBot.class.getResource("Design sem nome(1).png")));
 		lblNewLabel.setBounds(0, 0, 358, 552);
 		contentPane.add(lblNewLabel);
 	}
