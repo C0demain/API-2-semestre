@@ -2,6 +2,9 @@ package GUI;
 
 import java.awt.EventQueue;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,17 +16,25 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 
 import bot.Bot;
 
 public class TelaBot extends JFrame implements ActionListener{
-
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField pergunta;
@@ -31,12 +42,14 @@ public class TelaBot extends JFrame implements ActionListener{
 	public static String caminhoArquivo;
 
 	public void actionPerformed(ActionEvent e) {
-		TelaInicial.main(null);
-		TelaInicial.caminhoArquivo = caminhoArquivo;
+		SeletorArquivoGUI.main(null);
+		SeletorArquivoGUI.caminhoArquivo = caminhoArquivo;
 		this.dispose();
 	}
 	
 	public TelaBot() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 374, 591);
 		contentPane = new JPanel();
@@ -87,6 +100,29 @@ public class TelaBot extends JFrame implements ActionListener{
 				
 			}
 		});
+	
+		
+		// Adicione um Action que será executado quando a tecla Enter for pressionada no campo "pergunta"
+        Action enterAction = new AbstractAction() {
+        	 @Override
+             public void actionPerformed(ActionEvent e) {
+                 String textoPergunta = pergunta.getText(); // Obtém o texto da caixa de texto
+                 if (!textoPergunta.isEmpty()) {
+                     // Verifique se o campo de pergunta não está vazio
+                     String resp = null;
+					try {
+						resp = Bot.perguntar(caminhoArquivo, textoPergunta);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+                     resposta.setText(resp);
+                 }
+        	 }
+        };
+
+        // Adicione o Action ao campo de pergunta para o evento Enter
+        pergunta.addActionListener(enterAction);
 		
 		buttomEnviar.setForeground(new Color(0, 0, 0));
 		buttomEnviar.setBackground(new Color(255, 255, 255));
@@ -105,4 +141,8 @@ public class TelaBot extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(0, 0, 358, 552);
 		contentPane.add(lblNewLabel);
 	}
+	
+	public static void main(String[] args) {
+        new TelaBot().setVisible(true);;
+    }
 }
