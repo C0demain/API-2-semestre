@@ -6,6 +6,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.DosFileAttributeView;
+import java.nio.file.attribute.DosFileAttributes;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.FileAttributeView;
+
+
 
 public class LimpaArquivo {
 
@@ -16,21 +24,21 @@ public class LimpaArquivo {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(dir, Charset.forName("UTF8")));
             String line;
-            StringBuilder content = new StringBuilder();
 
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (!line.matches("\\d+")) {
-                    content.append(line).append("\n");
+                    line = line.replace(".", ".\n").replace("\n\n", "\n").replace("\t", "");
+                    writer.write(line + "\n");
                 }
             }
 
             reader.close();
-            content = new StringBuilder(content.toString().replace(".", ".\n"));
-            content = new StringBuilder(content.toString().replace("\n\n", "\n"));
-            content = new StringBuilder(content.toString().replace("\t", ""));
-            writer.write(content.toString());
             writer.close();
+            
+            // Tornar o arquivo oculto
+            Path arquivoPath = Path.of(dir);
+            Files.setAttribute(arquivoPath, "dos:hidden", true);
         } catch (IOException e) {
             e.printStackTrace();
         }
