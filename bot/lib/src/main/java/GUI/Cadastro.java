@@ -5,8 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.UsuarioDAO;
+import modelo.Usuario;
+
 import javax.swing.JButton;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 import java.awt.FlowLayout;
 import java.awt.Color;
@@ -14,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Font;
+import modelo.Usuario;
+import dao.UsuarioDAO;
 
 public class Cadastro extends JFrame {
 
@@ -37,7 +46,8 @@ public class Cadastro extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});				
+		
 	}
 
 	/**
@@ -61,6 +71,16 @@ public class Cadastro extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton Entrar = new JButton("Cadastrar-se");
+		Entrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Usuario user = new Usuario(textField.getText(), textField_1.getText(),textField_2.getText(), textField_3.getText() );
+				
+				UsuarioDAO cadastro = new UsuarioDAO(); 
+				
+				cadastro.adiciona(user);
+								
+			}
+		});
 		Entrar.setFont(new Font("Arial", Font.PLAIN, 11));
 		Entrar.setBackground(Color.LIGHT_GRAY);
 		Entrar.setForeground(Color.BLACK);
