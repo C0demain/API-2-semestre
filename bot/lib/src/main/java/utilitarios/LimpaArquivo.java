@@ -9,20 +9,22 @@ import java.nio.charset.Charset;
 
 public class LimpaArquivo {
 
-	public static void main(String[] args) {
-    	String arq = "C:\\Users\\Manhã\\Desktop\\prince.txt";
-    	String dir = "C:\\Users\\Manhã\\Desktop\\aux.txt";
+    public static void limparArquivo(String caminhoArquivo) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(arq , Charset.forName("UTF8")));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dir , Charset.forName("UTF8")));
-            String line;	            
+            BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo, Charset.forName("UTF8")));
+            String dir = caminhoArquivo.replace(".txt", "_limpo.txt"); // Nome do arquivo limpo
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(dir, Charset.forName("UTF8")));
+            String line;
             StringBuilder content = new StringBuilder();
+
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 if (!line.matches("\\d+")) {
                     content.append(line).append("\n");
                 }
             }
+
             reader.close();
             content = new StringBuilder(content.toString().replace(".", ".\n"));
             content = new StringBuilder(content.toString().replace("\n\n", "\n"));
@@ -32,30 +34,15 @@ public class LimpaArquivo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        arq = dir;
-        dir  = "C:\\Users\\Manhã\\Desktop\\result.txt";
-        
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(arq , Charset.forName("UTF8")));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dir , Charset.forName("UTF8")));
-            String line;	            
-            StringBuilder content = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (!line.matches("\\d+")) {
-                    content.append(line).append("\n");
-                }
-            }
-            reader.close();
-            content = new StringBuilder(content.toString().replace(".", ".\n"));
-            content = new StringBuilder(content.toString().replace("\n\n", "\n"));
-            content = new StringBuilder(content.toString().replace("\t", ""));
-            writer.write(content.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Uso correto: java LimpaArquivo <caminho do arquivo>");
+            return;
         }
-        	        
+
+        String caminhoArquivo = args[0];
+        limparArquivo(caminhoArquivo);
     }
 }
