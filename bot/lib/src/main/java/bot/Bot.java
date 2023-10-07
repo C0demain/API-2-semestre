@@ -7,6 +7,7 @@ import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.huggingface.HuggingFaceChatModel;
 import dev.langchain4j.model.huggingface.HuggingFaceEmbeddingModel;
+import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.retriever.EmbeddingStoreRetriever;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
@@ -59,8 +60,8 @@ public class Bot {
         ConversationalRetrievalChain chain = ConversationalRetrievalChain.builder()
                 .chatLanguageModel(HuggingFaceChatModel.withAccessToken(HF_API_KEY))
                 .retriever(EmbeddingStoreRetriever.from(embeddingStore, embeddingModel))
-                // .chatMemory() // you can override default chat memory
                 // .promptTemplate() // you can override default prompt template
+                .chatLanguageModel(OpenAiChatModel.withApiKey(ApiKeys.OPENAI_API_KEY)) // .chatMemory() // you can override default chat memory
                 .build();
         
         
