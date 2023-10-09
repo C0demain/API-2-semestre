@@ -28,10 +28,10 @@ public class Cadastro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField nome;
+	private JTextField usuario;
+	private JTextField cpf;
+	private JTextField senha;
 
 	/**
 	 * Launch the application.
@@ -65,15 +65,15 @@ public class Cadastro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(53, 135, 241, 23);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		usuario = new JTextField();
+		usuario.setBounds(53, 135, 241, 23);
+		contentPane.add(usuario);
+		usuario.setColumns(10);
 		
 		JButton Entrar = new JButton("Cadastrar-se");
 		Entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Usuario user = new Usuario(textField.getText(), textField_1.getText(),textField_2.getText(), textField_3.getText() );
+				Usuario user = new Usuario(nome.getText(), usuario.getText(),cpf.getText(), senha.getText() );
 				
 				UsuarioDAO cadastro = new UsuarioDAO(); 
 				
@@ -87,10 +87,10 @@ public class Cadastro extends JFrame {
 		Entrar.setBounds(53, 343, 119, 23);
 		contentPane.add(Entrar);
 		
-		textField = new JTextField();
-		textField.setBounds(53, 59, 241, 23);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		nome = new JTextField();
+		nome.setBounds(53, 59, 241, 23);
+		contentPane.add(nome);
+		nome.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome :");
 		lblNewLabel_1.setForeground(Color.WHITE);
@@ -110,26 +110,26 @@ public class Cadastro extends JFrame {
 		lblNewLabel_2_1.setBounds(53, 255, 46, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Email :");
+		JLabel lblNewLabel_1_1 = new JLabel("Cpf :");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 12));
 		lblNewLabel_1_1.setBounds(53, 179, 89, 14);
 		contentPane.add(lblNewLabel_1_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(53, 210, 241, 23);
-		contentPane.add(textField_2);
+		cpf = new JTextField();
+		cpf.setColumns(10);
+		cpf.setBounds(53, 210, 241, 23);
+		contentPane.add(cpf);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(53, 280, 241, 23);
-		contentPane.add(textField_3);
+		senha = new JTextField();
+		senha.setColumns(10);
+		senha.setBounds(53, 280, 241, 23);
+		contentPane.add(senha);
 		
 		JLabel lblNewLabel = new JLabel("Entrar");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 10));
 		lblNewLabel.setBackground(Color.GRAY);
-		lblNewLabel.setIcon(new ImageIcon(Cadastro.class.getResource("/GUI/Design sem nome (1).png")));
+		lblNewLabel.setIcon(new ImageIcon(Cadastro.class.getResource("MicrosoftTeams-image.png")));
 		lblNewLabel.setBounds(0, 0, 423, 414);
 		contentPane.add(lblNewLabel);
 	}
