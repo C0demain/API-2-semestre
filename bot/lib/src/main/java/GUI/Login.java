@@ -1,33 +1,41 @@
-package src;
+package GUI;
 
-import java.awt.EventQueue;
+import factory.ConnectionFactory;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JToggleButton;
-import java.awt.Button;
-import java.awt.TextField;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridLayout;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.BoxLayout;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
-import java.awt.SystemColor;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Login extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JPanel panel;
+	private JTextField usuario;
+	private JPasswordField senha;
+	private Connection connection = new ConnectionFactory().getConnection();
+	;
+
+	public void execLogin(String user, String senha) {
+		String sql = "SELECT * FROM usuarios WHERE usuario=? AND senha=?";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, user);
+			preparedStatement.setString(2, senha);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()){
+				JOptionPane.showMessageDialog(panel, "Usuário logado - ID: "+resultSet.getString("id"));
+			} else {
+				JOptionPane.showMessageDialog(panel, "Nome de usuário ou senha incorreto");
+			}
+		} catch (SQLException exception) {
+			exception.printStackTrace();
+		}
+	}
 
 	/**
 	 * Launch the application.
@@ -51,41 +59,53 @@ public class Login extends JFrame {
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 353);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panel = new JPanel();
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
+		setContentPane(panel);
+		panel.setLayout(null);
+
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.setBounds(87, 215, 102, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Logar");
-		btnNewButton_1.setBounds(276, 215, 102, 23);
-		contentPane.add(btnNewButton_1);
-		
-		textField = new JTextField();
-		textField.setBounds(87, 85, 291, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(87, 151, 291, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
+		panel.add(btnNewButton);
+
+		JButton login = new JButton("Login");
+		login.setBounds(276, 215, 102, 23);
+		panel.add(login);
+		login.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String strUsuario = usuario.getText();
+				String strSenha = new String(senha.getPassword());
+				if (strUsuario.isEmpty() || strSenha.isEmpty()) {
+					JOptionPane.showMessageDialog(panel, "Usuário e senha não podem estar vazios");
+				} else {
+					execLogin(strUsuario, strSenha);
+				}
+			}
+		});
+
+		usuario = new JTextField();
+		usuario.setBounds(87, 85, 291, 20);
+		panel.add(usuario);
+		usuario.setColumns(10);
+
+		senha = new JPasswordField();
+		senha.setBounds(87, 151, 291, 20);
+		panel.add(senha);
+		senha.setColumns(10);
+
 		JTextPane txtpnUsuario = new JTextPane();
 		txtpnUsuario.setBackground(SystemColor.control);
 		txtpnUsuario.setText("Usuario : ");
 		txtpnUsuario.setBounds(87, 50, 53, 20);
-		contentPane.add(txtpnUsuario);
-		
+		panel.add(txtpnUsuario);
+
 		JTextPane txtpnSenha = new JTextPane();
 		txtpnSenha.setBackground(SystemColor.control);
 		txtpnSenha.setEditable(false);
 		txtpnSenha.setText("Senha :");
 		txtpnSenha.setBounds(87, 120, 44, 20);
-		contentPane.add(txtpnSenha);
+		panel.add(txtpnSenha);
 	}
 }
