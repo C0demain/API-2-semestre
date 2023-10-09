@@ -27,6 +27,7 @@ import dao.UsuarioDAO;
 public class Cadastro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private JFrame frame;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField usuario;
@@ -40,8 +41,8 @@ public class Cadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cadastro frame = new Cadastro();
-					frame.setVisible(true);
+					Cadastro cadastro = new Cadastro();
+					cadastro.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,15 +55,16 @@ public class Cadastro extends JFrame {
 	 * Create the frame.
 	 */
 	public Cadastro() {
-		setTitle("Login");
-		setForeground(new Color(128, 128, 128));
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 429, 446);
+		this.frame = new JFrame();
+		this.frame.setTitle("Login");
+		this.frame.setForeground(new Color(128, 128, 128));
+		this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.frame.setBounds(100, 100, 429, 446);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
+		this.frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		usuario = new JTextField();
@@ -78,6 +80,8 @@ public class Cadastro extends JFrame {
 				UsuarioDAO cadastro = new UsuarioDAO(); 
 				
 				cadastro.adiciona(user);
+				
+				frame.dispose();
 								
 			}
 		});
