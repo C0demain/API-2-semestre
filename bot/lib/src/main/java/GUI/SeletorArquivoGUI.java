@@ -70,4 +70,3 @@ public class SeletorArquivoGUI extends JFrame implements ActionListener {
         new SeletorArquivoGUI();
     }
 }
-//teste
