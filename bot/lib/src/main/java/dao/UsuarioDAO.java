@@ -2,13 +2,10 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import factory.ConnectionFactory;
 import modelo.Usuario;
-
-import javax.swing.*;
 
 public class UsuarioDAO {
 	private Connection connection;
@@ -33,5 +30,4 @@ public class UsuarioDAO {
 			throw new RuntimeException(u);
 		}
 	}
-
 }
