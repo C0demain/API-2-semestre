@@ -1,80 +1,91 @@
-package GUI;
+package src;
 
-import dao.UsuarioDAO;
-import factory.ConnectionFactory;
+import java.awt.EventQueue;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JToggleButton;
+import java.awt.Button;
+import java.awt.TextField;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.GridLayout;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
-public class Login extends Component {
-    private JFrame frame;
-    private JTextField user;
-    private JPasswordField senha;
-    private JLabel label;
-    private JButton login;
-    private JButton sair;
-    private Connection connection = new ConnectionFactory().getConnection();;
+public class Login extends JFrame {
 
-    public Login(){
-        initialize();
-        login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String strUsuario = user.getText();
-                String strSenha = new String(senha.getPassword());
-                execLogin(strUsuario, strSenha);
-            }
-        });
-        sair.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TelaInicial.main(null);
-                frame.dispose();
-            }
-        });
-    }
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
 
-    public void execLogin(String user, String senha) {
-        String sql = "SELECT * FROM chatbot";
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next());{
-                if (user.equals(resultSet.getString("usuario")) && senha.equals(resultSet.getString("senha"))){
-                    System.out.println("Login realizado com sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this,"Nome de usuário ou senha incorreto");
-                }
-            }
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-        } catch (SQLException exception){
-            exception.printStackTrace();
-        }
-    }
+	/**
+	 * Create the frame.
+	 */
+	public Login() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 353);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-    private void initialize(){
-        frame = new JFrame();
-        frame.setVisible(true);
-        frame.setBounds(100, 100, 400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-
-        login = new JButton("Login");
-        login.setBounds(50,200,100,40);
-        frame.getContentPane().add(login);
-
-        sair = new JButton("Sair");
-        sair.setBounds(250,200,100,40);
-        frame.getContentPane().add(sair);
-    }
-
-    public static void main(String[] args) {
-        new Login();
-    }
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Cadastrar");
+		btnNewButton.setBounds(87, 215, 102, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Logar");
+		btnNewButton_1.setBounds(276, 215, 102, 23);
+		contentPane.add(btnNewButton_1);
+		
+		textField = new JTextField();
+		textField.setBounds(87, 85, 291, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(87, 151, 291, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JTextPane txtpnUsuario = new JTextPane();
+		txtpnUsuario.setBackground(SystemColor.control);
+		txtpnUsuario.setText("Usuario : ");
+		txtpnUsuario.setBounds(87, 50, 53, 20);
+		contentPane.add(txtpnUsuario);
+		
+		JTextPane txtpnSenha = new JTextPane();
+		txtpnSenha.setBackground(SystemColor.control);
+		txtpnSenha.setEditable(false);
+		txtpnSenha.setText("Senha :");
+		txtpnSenha.setBounds(87, 120, 44, 20);
+		contentPane.add(txtpnSenha);
+	}
 }
