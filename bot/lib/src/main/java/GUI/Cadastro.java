@@ -129,7 +129,7 @@ public class Cadastro extends JFrame {
 		JLabel lblNewLabel = new JLabel("Entrar");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 10));
 		lblNewLabel.setBackground(Color.GRAY);
-		lblNewLabel.setIcon(new ImageIcon(Cadastro.class.getResource("/GUI/Design sem nome (1).png")));
+		//lblNewLabel.setIcon(new ImageIcon(Cadastro.class.getResource("/GUI/Design sem nome (1).png")));
 		lblNewLabel.setBounds(0, 0, 423, 414);
 		contentPane.add(lblNewLabel);
 	}

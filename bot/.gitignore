@@ -3,3 +3,7 @@
 
 # Ignore Gradle build output directory
 build
+
+.idea
+
+API-2-semestre.imlAPI-2-semestre.iml
