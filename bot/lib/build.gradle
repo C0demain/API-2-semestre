@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-jre'
     
     implementation 'dev.langchain4j:langchain4j:0.22.0'
+
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.1.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
