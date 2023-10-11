@@ -16,6 +16,14 @@ import java.awt.Scrollbar;
 import javax.swing.JMenuBar;
 import javax.swing.JRadioButton;
 import javax.swing.JSplitPane;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.JTextPane;
 
 
 public class TelaInicial extends JFrame implements ActionListener{
@@ -25,6 +33,7 @@ public class TelaInicial extends JFrame implements ActionListener{
 	private JButton buttomArquivos;
 	
 	public static String caminhoArquivo = "";
+	private JLabel lblNewLabel;
 	
 	public TelaInicial() {
 		/* Gera a tela*/
@@ -75,17 +84,32 @@ public class TelaInicial extends JFrame implements ActionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 527, 332);
+		frame.setBounds(100, 100, 375, 592);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		buttomArquivos = new JButton("Arquivos");
-		buttomArquivos.setBounds(64, 186, 125, 43);
-		frame.getContentPane().add(buttomArquivos);
+		JTextPane txtpnSeA = new JTextPane();
+		txtpnSeA.setFont(new Font("Arial", Font.PLAIN, 14));
+		txtpnSeA.setBackground(UIManager.getColor("Button.darkShadow"));
+		txtpnSeA.setForeground(Color.WHITE);
+		txtpnSeA.setText("Se é a sua primeira vez,\r\nselecione \"Arquivos\" para escolher \r\no arquivo que servirá de base para \r\nas respostas do bot.\r\n\r\n\r\nSe não, pode ir por onde preferir!\r\nBoa conversa!");
+		txtpnSeA.setBounds(30, 42, 276, 148);
+		frame.getContentPane().add(txtpnSeA);
 		
 		buttomChat = new JButton("Chat");
-		buttomChat.setBounds(314, 186, 125, 43);
+		buttomChat.setBounds(205, 428, 125, 43);
 		frame.getContentPane().add(buttomChat);
+		
+		buttomArquivos = new JButton("Arquivos");
+		buttomArquivos.setBounds(30, 428, 125, 43);
+		frame.getContentPane().add(buttomArquivos);
+		
+		lblNewLabel = new JLabel("Entrar");
+		lblNewLabel.setIcon(new ImageIcon(TelaInicial.class.getResource("/GUI/img.png")));
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 10));
+		lblNewLabel.setBackground(UIManager.getColor("Button.disabledForeground"));
+		lblNewLabel.setBounds(0, 0, 359, 552);
+		frame.getContentPane().add(lblNewLabel);
 	}
 
 	@Override

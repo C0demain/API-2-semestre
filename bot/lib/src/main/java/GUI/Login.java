@@ -58,19 +58,27 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 353);
+		setBounds(100, 100, 377, 594);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(panel);
 		panel.setLayout(null);
+		
+		JTextArea txtrPodeLogarPara = new JTextArea();
+		txtrPodeLogarPara.setBackground(UIManager.getColor("Button.darkShadow"));
+		txtrPodeLogarPara.setForeground(Color.WHITE);
+		txtrPodeLogarPara.setFont(new Font("Arial", Font.BOLD, 14));
+		txtrPodeLogarPara.setText("Pode logar para utilizar o nosso bot!\r\n\r\nCaso não tenha login,\r\nRealize seu cadastro!");
+		txtrPodeLogarPara.setBounds(34, 37, 291, 80);
+		panel.add(txtrPodeLogarPara);
 
 		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setBounds(87, 215, 102, 23);
+		btnNewButton.setBounds(34, 356, 102, 23);
 		panel.add(btnNewButton);
 
 		JButton login = new JButton("Login");
-		login.setBounds(276, 215, 102, 23);
+		login.setBounds(223, 356, 102, 23);
 		panel.add(login);
 		login.addActionListener(new ActionListener() {
 			@Override
@@ -86,26 +94,31 @@ public class Login extends JFrame {
 		});
 
 		usuario = new JTextField();
-		usuario.setBounds(87, 85, 291, 20);
+		usuario.setBounds(34, 195, 291, 20);
 		panel.add(usuario);
 		usuario.setColumns(10);
 
 		senha = new JPasswordField();
-		senha.setBounds(87, 151, 291, 20);
+		senha.setBounds(34, 258, 291, 20);
 		panel.add(senha);
 		senha.setColumns(10);
 
 		JTextPane txtpnUsuario = new JTextPane();
 		txtpnUsuario.setBackground(SystemColor.control);
 		txtpnUsuario.setText("Usuario : ");
-		txtpnUsuario.setBounds(87, 50, 53, 20);
+		txtpnUsuario.setBounds(34, 174, 53, 20);
 		panel.add(txtpnUsuario);
 
 		JTextPane txtpnSenha = new JTextPane();
 		txtpnSenha.setBackground(SystemColor.control);
 		txtpnSenha.setEditable(false);
 		txtpnSenha.setText("Senha :");
-		txtpnSenha.setBounds(87, 120, 44, 20);
+		txtpnSenha.setBounds(34, 237, 44, 20);
 		panel.add(txtpnSenha);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/GUI/img.png")));
+		lblNewLabel.setBounds(0, 0, 361, 555);
+		panel.add(lblNewLabel);
 	}
 }

@@ -8,6 +8,7 @@ import utilitarios.LimpaArquivo;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
 
 
 public class SeletorArquivoGUI extends JFrame implements ActionListener {
@@ -31,11 +32,13 @@ public class SeletorArquivoGUI extends JFrame implements ActionListener {
     	});
 
         MainPanel = new JPanel(new BorderLayout());
+        nomeArquivo.setFont(new Font("Arial", Font.BOLD, 14));
         MainPanel.add(nomeArquivo, BorderLayout.CENTER);
+        button1.setFont(new Font("Arial", Font.PLAIN, 11));
         MainPanel.add(button1, BorderLayout.SOUTH);
 
         setContentPane(MainPanel);
-        setSize(300, 262);
+        setSize(376, 594);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
