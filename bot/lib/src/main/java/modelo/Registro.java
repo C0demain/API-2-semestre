@@ -1,12 +1,14 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Registro {
 	private int idUsuario;
 	private String descricao;
-	private String data;
+	private Date data;
 	
 	
-	public Registro(int idUsuario, String descricao, String data) {
+	public Registro(int idUsuario, String descricao, Date data) {
 		this.idUsuario = idUsuario;
 		this.descricao = descricao;
 		this.data = data;
@@ -33,12 +35,12 @@ public class Registro {
 	}
 
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	

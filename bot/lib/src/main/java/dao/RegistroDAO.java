@@ -21,7 +21,7 @@ public class RegistroDAO {
 			
 			stmt.setInt(1, registro.getIdUsuario());
 			stmt.setString(2, registro.getDescricao());
-			stmt.setString(3, registro.getData());
+			stmt.setDate(3, registro.getData());
 			stmt.execute();
 			stmt.close();
 		}
