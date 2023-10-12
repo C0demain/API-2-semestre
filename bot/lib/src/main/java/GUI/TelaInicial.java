@@ -107,6 +107,20 @@ public class TelaInicial extends JFrame implements ActionListener{
 		buttomArquivos.setBounds(30, 428, 125, 43);
 		frame.getContentPane().add(buttomArquivos);
 		
+		JButton registroButton = new JButton("Registro");
+		registroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Vai pra tela Dashboard
+				Dashboard tela = new Dashboard();
+				tela.usuarioLogadoId = usuarioLogadoId;
+				tela.main(null);
+				
+				frame.dispose();
+			}
+		});
+		registroButton.setBounds(129, 508, 89, 23);
+		frame.getContentPane().add(registroButton);
+		
 		lblNewLabel = new JLabel("Entrar");
 		lblNewLabel.setIcon(new ImageIcon(TelaInicial.class.getResource("/GUI/img.png")));
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 10));
