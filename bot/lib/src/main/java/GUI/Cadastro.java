@@ -7,22 +7,25 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dao.UsuarioDAO;
+import dao.RegistroDAO;
 import modelo.Usuario;
+import modelo.Registro;
 
 import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.JTextArea;
 import java.awt.FlowLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Font;
-import modelo.Usuario;
-import dao.UsuarioDAO;
+
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
@@ -93,11 +96,26 @@ public class Cadastro extends JFrame {
 		Entrar.setBounds(202, 492, 119, 23);
 		Entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Usuario user = new Usuario(nome.getText(), usuario.getText(),cpf.getText(), senha.getText() );
+				try {
+					Usuario user = new Usuario(nome.getText(), usuario.getText(),cpf.getText(), senha.getText() );
+					
+					UsuarioDAO cadastro = new UsuarioDAO(); 
+					
+					cadastro.adiciona(user);
+					
+					// Registro
+					long millis = System.currentTimeMillis();
+					Date date = new Date(millis);
+					int userId = cadastro.getIdOf(user.getUsuario());
+					Registro registro = new Registro(userId, "Se cadastrou no sistema", date);
+					
+					RegistroDAO regDAO = new RegistroDAO();
+					regDAO.adiciona(registro);
+					
+				}catch (Exception error) {
+					System.out.println(error);
+				}
 				
-				UsuarioDAO cadastro = new UsuarioDAO(); 
-				
-				cadastro.adiciona(user);
 				
 				frame.dispose();
 								

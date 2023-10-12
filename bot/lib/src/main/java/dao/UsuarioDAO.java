@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import factory.ConnectionFactory;
@@ -25,6 +26,24 @@ public class UsuarioDAO {
 			stmt.setString(4, usuario.getSenha());
 			stmt.execute();
 			stmt.close();
+		}
+		catch (SQLException u) {
+			throw new RuntimeException(u);
+		}
+	}
+	
+	public int getIdOf(String username) {
+		String sql = "SELECT * FROM usuarios WHERE usuario=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, username);
+			ResultSet resultSet = stmt.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getInt("id");
+			}else {
+				throw new RuntimeException("Nao foi possivel encontrar um usuario com esse username");
+			}
 		}
 		catch (SQLException u) {
 			throw new RuntimeException(u);

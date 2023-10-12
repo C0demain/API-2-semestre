@@ -1,6 +1,8 @@
 package GUI;
 
 import factory.ConnectionFactory;
+import modelo.Registro;
+import dao.RegistroDAO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 public class Login extends JFrame {
 
@@ -28,6 +31,14 @@ public class Login extends JFrame {
 			preparedStatement.setString(2, senha);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()){
+				
+				// Registro
+				long millis = System.currentTimeMillis();
+				Date date = new Date(millis);
+				Registro registro = new Registro(resultSet.getInt("id"), "Entrou no sistema", date);
+				RegistroDAO regDAO = new RegistroDAO();
+				regDAO.adiciona(registro);
+				
 				JOptionPane.showMessageDialog(panel, "Usuário logado - ID: "+resultSet.getString("id"));
 			} else {
 				JOptionPane.showMessageDialog(panel, "Nome de usuário ou senha incorreto");
