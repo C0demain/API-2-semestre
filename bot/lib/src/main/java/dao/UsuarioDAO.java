@@ -32,6 +32,25 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public Usuario getById(int id) {
+		String sql = "SELECT * FROM usuarios WHERE id=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setInt(1, id);
+			ResultSet resultSet = stmt.executeQuery();
+			if(resultSet.next()) {
+				Usuario user = new Usuario(resultSet.getString("nome"), resultSet.getString("usuario"), resultSet.getString("cpf"), resultSet.getString("senha"));
+				return user;
+			}else {
+				throw new RuntimeException("Nao foi possivel encontrar um usuario com id");
+			}
+		}
+		catch (SQLException u) {
+			throw new RuntimeException(u);
+		}
+	}
+	
 	public int getIdOf(String username) {
 		String sql = "SELECT * FROM usuarios WHERE usuario=?";
 		try {

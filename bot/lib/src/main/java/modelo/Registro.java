@@ -3,6 +3,7 @@ package modelo;
 import java.sql.Date;
 
 public class Registro {
+	private int id;
 	private int idUsuario;
 	private String descricao;
 	private Date data;
@@ -13,7 +14,22 @@ public class Registro {
 		this.descricao = descricao;
 		this.data = data;
 	}
+	
+	public Registro(int id, int idUsuario, String descricao, Date data) {
+		this.idUsuario = id;
+		this.idUsuario = idUsuario;
+		this.descricao = descricao;
+		this.data = data;
+	}
 
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getIdUsuario() {
 		return idUsuario;
