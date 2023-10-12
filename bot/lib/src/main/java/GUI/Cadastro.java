@@ -11,6 +11,8 @@ import dao.RegistroDAO;
 import modelo.Usuario;
 import modelo.Registro;
 
+import GUI.Login;
+
 import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -97,6 +99,7 @@ public class Cadastro extends JFrame {
 		Entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					// Cadastro
 					Usuario user = new Usuario(nome.getText(), usuario.getText(),cpf.getText(), senha.getText() );
 					
 					UsuarioDAO cadastro = new UsuarioDAO(); 
@@ -116,7 +119,9 @@ public class Cadastro extends JFrame {
 					System.out.println(error);
 				}
 				
-				
+				// Troca de janela
+				Login login = new Login();
+				login.main(null);
 				frame.dispose();
 								
 			}

@@ -40,6 +40,11 @@ public class Login extends JFrame {
 				regDAO.adiciona(registro);
 				
 				JOptionPane.showMessageDialog(panel, "Usuário logado - ID: "+resultSet.getString("id"));
+				
+				// Troca de janela
+				TelaInicial tela = new TelaInicial();
+				tela.main(null);
+				this.dispose();
 			} else {
 				JOptionPane.showMessageDialog(panel, "Nome de usuário ou senha incorreto");
 			}
