@@ -43,6 +43,7 @@ public class Login extends JFrame {
 				
 				// Troca de janela
 				TelaInicial tela = new TelaInicial();
+				tela.usuarioLogadoId = registro.getIdUsuario();
 				tela.main(null);
 				this.dispose();
 			} else {

@@ -40,10 +40,12 @@ public class TelaBot extends JFrame implements ActionListener{
 	private JTextField pergunta;
 	
 	public static String caminhoArquivo;
+	public static int usuarioLogadoId;
 
 	public void actionPerformed(ActionEvent e) {
 		SeletorArquivoGUI.main(null);
 		SeletorArquivoGUI.caminhoArquivo = caminhoArquivo;
+		SeletorArquivoGUI.usuarioLogadoId = usuarioLogadoId;
 		this.dispose();
 	}
 	

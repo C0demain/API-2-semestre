@@ -3,11 +3,14 @@ package GUI;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import dao.RegistroDAO;
+import modelo.Registro;
 import utilitarios.LimpaArquivo;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.awt.Font;
 
 
@@ -18,6 +21,7 @@ public class SeletorArquivoGUI extends JFrame implements ActionListener {
     private JLabel nomeArquivo = new JLabel("Escolha seu arquivo", SwingConstants.CENTER);
 
     public static String caminhoArquivo;
+    public static int usuarioLogadoId;
 
     public SeletorArquivoGUI() {
     	
@@ -26,6 +30,7 @@ public class SeletorArquivoGUI extends JFrame implements ActionListener {
     	    public void actionPerformed(ActionEvent e) {
     	        TelaBot telaBot = new TelaBot();
     	        TelaBot.caminhoArquivo = caminhoArquivo;
+    	        TelaBot.usuarioLogadoId = usuarioLogadoId;
     	        telaBot.setVisible(true);
     	        dispose(); // Fecha a janela atual (SeletorArquivoGUI)
     	    }
@@ -54,6 +59,16 @@ public class SeletorArquivoGUI extends JFrame implements ActionListener {
                     MainPanel.remove(button1); // Remover o botão "Carregar"
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
                     LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
+                    
+                    // Registro
+                    long millis = System.currentTimeMillis();
+					Date date = new Date(millis);
+
+					String descricao = "Arquivo " + caminhoArquivo.substring(caminhoArquivo.lastIndexOf('\\') + 1) + " selecionado";
+					Registro registro = new Registro(usuarioLogadoId, descricao, date);
+					
+					RegistroDAO regDAO = new RegistroDAO();
+					regDAO.adiciona(registro);
                     
                 } else {
                     nomeArquivo.setText("Operação cancelada");

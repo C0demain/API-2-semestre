@@ -33,6 +33,7 @@ public class TelaInicial extends JFrame implements ActionListener{
 	private JButton buttomArquivos;
 	
 	public static String caminhoArquivo = "";
+	public static int usuarioLogadoId;
 	private JLabel lblNewLabel;
 	
 	public TelaInicial() {
@@ -45,6 +46,7 @@ public class TelaInicial extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			TelaBot telaBot = new TelaBot();
 			TelaBot.caminhoArquivo = caminhoArquivo;
+			TelaBot.usuarioLogadoId = usuarioLogadoId;
 			telaBot.setVisible(true);
 			frame.dispose();
 			}
@@ -56,6 +58,7 @@ public class TelaInicial extends JFrame implements ActionListener{
         public void actionPerformed(ActionEvent e) {
 			SeletorArquivoGUI seletor = new SeletorArquivoGUI();
 			SeletorArquivoGUI.caminhoArquivo = caminhoArquivo;
+			SeletorArquivoGUI.usuarioLogadoId = usuarioLogadoId;
 			seletor.setVisible(true);
 			frame.dispose();        
 			}
