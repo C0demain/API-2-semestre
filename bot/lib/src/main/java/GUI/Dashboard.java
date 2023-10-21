@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -19,16 +20,16 @@ import modelo.Registro;
 import GUI.TelaInicial;
 
 
-public class Dashboard extends javax.swing.JFrame {
+public class Dashboard extends Tela {
 	
 	private DefaultTableModel modelo = new DefaultTableModel();
-	public static int usuarioLogadoId;
 	private static Dashboard dashboard;
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public Dashboard(TelaController controller) {
+    	super(controller);
         initComponents();
     }
 
@@ -67,15 +68,12 @@ public class Dashboard extends javax.swing.JFrame {
         voltarButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e){
-				// Trocar janela
-				TelaInicial tela = new TelaInicial();
-				tela.usuarioLogadoId = usuarioLogadoId;
-				tela.main(null);
-				
-				dashboard.dispose();
+				mudaTela("Inicial"); // Vai para a tela inicial
 				
 			}
 		});
+        
+        jTable1.setMinimumSize(new Dimension(jTable1.getWidth(), jTable1.getRowHeight()*modelo.getRowCount())); // Define tamanho para caber os registros
         
         jTable1.setModel(modelo);
         jScrollPane1.setViewportView(jTable1);
@@ -109,18 +107,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                dashboard = new Dashboard();
-                dashboard.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
