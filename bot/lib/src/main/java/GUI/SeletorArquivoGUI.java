@@ -21,6 +21,7 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
     private JLabel nomeArquivo = new JLabel("Escolha seu arquivo", SwingConstants.CENTER);
 
     public static String caminhoArquivo;
+    
 
     public SeletorArquivoGUI(TelaController controller) {
     	super(controller);
@@ -35,8 +36,10 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
         MainPanel = new JPanel(new BorderLayout());
         nomeArquivo.setFont(new Font("Arial", Font.BOLD, 14));
         MainPanel.add(nomeArquivo, BorderLayout.CENTER);
-        button1.setFont(new Font("Arial", Font.PLAIN, 11));
-        MainPanel.add(button1, BorderLayout.SOUTH);
+        MainPanel.add(button1, BorderLayout.NORTH);
+        
+        button1.setFont(new Font("Arial", Font.BOLD, 14));
+        button2.setFont(new Font("Arial", Font.BOLD, 14));
 
         setContentPane(MainPanel);
         setSize(376, 594);
@@ -52,7 +55,7 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
                     caminhoArquivo = fileChooser.getSelectedFile().getAbsolutePath();
                     setDado("caminhoArquivo", caminhoArquivo);
                     nomeArquivo.setText(caminhoArquivo);
-                    MainPanel.remove(button1); // Remover o botão "Carregar"
+                    //MainPanel.remove(button1); // Remover o botão "Carregar"
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
                     LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
                     

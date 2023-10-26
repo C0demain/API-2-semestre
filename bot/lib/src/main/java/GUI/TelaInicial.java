@@ -69,7 +69,7 @@ public class TelaInicial extends Tela implements ActionListener{
 		txtpnSeA.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtpnSeA.setBackground(UIManager.getColor("Button.darkShadow"));
 		txtpnSeA.setForeground(Color.WHITE);
-		txtpnSeA.setText("Se é a sua primeira vez,\r\nselecione \"Arquivos\" para escolher \r\no arquivo que servirá de base para \r\nas respostas do bot.\r\n\r\n\r\nSe não, pode ir por onde preferir!\r\nBoa conversa!");
+		txtpnSeA.setText("Se é a sua primeira vez por aqui,\r\nselecione \"Arquivos\" para escolher \r\no arquivo que servirá de base para \r\nas respostas do bot.\r\n\r\n\r\nCaso contrário, pode ir diretamente para a tela do chat.");
 		txtpnSeA.setBounds(30, 42, 276, 148);
 		this.getContentPane().add(txtpnSeA);
 		

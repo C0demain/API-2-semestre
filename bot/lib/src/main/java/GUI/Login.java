@@ -71,7 +71,7 @@ public class Login extends Tela {
 		txtrPodeLogarPara.setBackground(UIManager.getColor("Button.darkShadow"));
 		txtrPodeLogarPara.setForeground(Color.WHITE);
 		txtrPodeLogarPara.setFont(new Font("Arial", Font.BOLD, 14));
-		txtrPodeLogarPara.setText("Pode logar para utilizar o nosso bot!\r\n\r\nCaso não tenha login,\r\nRealize seu cadastro!");
+		txtrPodeLogarPara.setText("Realize o seu login para utilizar o bot!\r\n\r\nCaso não tenha login,\r\nRealize seu cadastro!");
 		txtrPodeLogarPara.setBounds(34, 37, 291, 80);
 		panel.add(txtrPodeLogarPara);
 
