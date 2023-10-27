@@ -18,6 +18,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import static dev.langchain4j.data.document.FileSystemDocumentLoader.loadDocument;
 import static java.time.Duration.ofSeconds;
 import java.io.File;
@@ -29,10 +32,10 @@ public class Bot {
 	
 	//HuggingFace API
     public static final String HF_API_KEY = "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";
+    private static List<Document> documentos = new ArrayList<Document>();
 	
-	public static String perguntar(String arquivo, String pergunta) throws Exception {
-
-        Document document = loadDocument(toPath(arquivo));
+	public static String perguntar(String pergunta) throws Exception {
+        
         
         //choosing an embedding model
         EmbeddingModel embeddingModel = HuggingFaceEmbeddingModel.builder()
@@ -50,7 +53,9 @@ public class Bot {
                 .embeddingModel(embeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
-        ingestor.ingest(document);
+        
+        ingestor.ingest(documentos);
+		
 
         
         
@@ -69,6 +74,14 @@ public class Bot {
         String answer = chain.execute(pergunta);
         return answer;
         
+	}
+	
+	public static void adicionarArquivo(String arquivo) {
+		try {
+			documentos.add(loadDocument(toPath(arquivo)));
+		}catch(Exception e){
+			System.out.println(e);
+		}
 	}
 	
 	private static Path toPath(String fileName) throws MalformedURLException {

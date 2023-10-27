@@ -53,9 +53,11 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
                 int r = fileChooser.showOpenDialog(null);
                 if (r == JFileChooser.APPROVE_OPTION) {
                     caminhoArquivo = fileChooser.getSelectedFile().getAbsolutePath();
-                    setDado("caminhoArquivo", caminhoArquivo);
+                    
+                    controller.adicionarArquivo(caminhoArquivo);
+                    
                     nomeArquivo.setText(caminhoArquivo);
-                    //MainPanel.remove(button1); // Remover o botão "Carregar"
+
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
                     LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
                     

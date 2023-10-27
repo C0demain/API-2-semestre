@@ -1,11 +1,13 @@
 package GUI;
 
 import java.util.HashMap;
+import bot.Bot;
 
 public class TelaController {
 	private HashMap<String, Tela> telas;
 	private Tela telaAtiva;
 	private HashMap<String, String> dadosUteis;
+	private Bot bot;
 
 	public static void main(String args[]) {
 		TelaController controller = new TelaController();
@@ -19,6 +21,7 @@ public class TelaController {
 		controller.registraTela("Dashboard", new Dashboard(controller));
 		
 		controller.mudaTela("Login"); // Inicia com a tela de login
+		
 	}
 	
 	
@@ -28,6 +31,7 @@ public class TelaController {
 		
 		this.setDado("usuarioLogadoId", "");
 		this.setDado("caminhoArquivo", "");
+		this.bot = new Bot();
 		
 	}
 	
@@ -59,5 +63,13 @@ public class TelaController {
 	
 	public HashMap<String, String> getDadosUteis() {
 		return dadosUteis;
+	}
+	
+	public Bot getBot() {
+		return this.bot;
+	}
+	
+	public void adicionarArquivo(String arquivo) {
+		this.bot.adicionarArquivo(arquivo);
 	}
 }

@@ -84,7 +84,7 @@ public class TelaBot extends Tela implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					String resp = Bot.perguntar(getDado("caminhoArquivo"), pergunta.getText());
+					String resp = Bot.perguntar(pergunta.getText());
 					resposta.setText(resp);
 				}catch (RuntimeException err) {
 					resposta.setText("Erro na leitura de arquivo");
@@ -107,7 +107,7 @@ public class TelaBot extends Tela implements ActionListener{
                      // Verifique se o campo de pergunta não está vazio
                      String resp = null;
 					try {
-						resp = Bot.perguntar(getDado("caminhoArquivo"), textoPergunta);
+						resp = Bot.perguntar(textoPergunta);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
