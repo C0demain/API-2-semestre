@@ -32,47 +32,30 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 
-public class Cadastro extends JFrame {
+public class Cadastro extends Tela {
 
 	private static final long serialVersionUID = 1L;
-	private JFrame frame;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField usuario;
 	private JTextField cpf;
 	private JTextField senha;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Cadastro cadastro = new Cadastro();
-					cadastro.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});				
-		
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro() {
-		this.frame = new JFrame();
-		this.frame.setTitle("Login");
-		this.frame.setForeground(new Color(128, 128, 128));
-		this.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.frame.setBounds(100, 100, 377, 594);
+	public Cadastro(TelaController controller) {
+		super(controller);
+		setTitle("Login");
+		setForeground(new Color(128, 128, 128));
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 377, 594);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		this.frame.setContentPane(contentPane);
+		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("Para se cadastrar, basta preencher todos os campos.");
@@ -120,9 +103,7 @@ public class Cadastro extends JFrame {
 				}
 				
 				// Troca de janela
-				Login login = new Login();
-				login.main(null);
-				frame.dispose();
+				mudaTela("Login");
 								
 			}
 		});

@@ -33,24 +33,18 @@ import java.awt.event.KeyEvent;
 
 import bot.Bot;
 
-public class TelaBot extends JFrame implements ActionListener{
+public class TelaBot extends Tela implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField pergunta;
-	
-	public static String caminhoArquivo;
-	public static int usuarioLogadoId;
 
 	public void actionPerformed(ActionEvent e) {
-		SeletorArquivoGUI.main(null);
-		SeletorArquivoGUI.caminhoArquivo = caminhoArquivo;
-		SeletorArquivoGUI.usuarioLogadoId = usuarioLogadoId;
-		this.dispose();
+		mudaTela("Inicial"); // Muda para tela inicial
 	}
 	
-	public TelaBot() {
-		
+	public TelaBot(TelaController controller) {
+		super(controller);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 377, 594);
@@ -90,7 +84,7 @@ public class TelaBot extends JFrame implements ActionListener{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					String resp = Bot.perguntar(caminhoArquivo, pergunta.getText());
+					String resp = Bot.perguntar(pergunta.getText());
 					resposta.setText(resp);
 				}catch (RuntimeException err) {
 					resposta.setText("Erro na leitura de arquivo");
@@ -113,7 +107,7 @@ public class TelaBot extends JFrame implements ActionListener{
                      // Verifique se o campo de pergunta não está vazio
                      String resp = null;
 					try {
-						resp = Bot.perguntar(caminhoArquivo, textoPergunta);
+						resp = Bot.perguntar(textoPergunta);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -143,8 +137,4 @@ public class TelaBot extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(0, 0, 358, 552);
 		contentPane.add(lblNewLabel);
 	}
-	
-	public static void main(String[] args) {
-        new TelaBot().setVisible(true);;
-    }
 }

@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 
-public class Login extends JFrame {
+public class Login extends Tela {
 
 	private JPanel panel;
 	private JTextField usuario;
@@ -39,13 +39,13 @@ public class Login extends JFrame {
 				RegistroDAO regDAO = new RegistroDAO();
 				regDAO.adiciona(registro);
 				
+				setDado("usuarioLogadoId", resultSet.getString("id")); // Manda id para o controller
+				
 				JOptionPane.showMessageDialog(panel, "Usuário logado - ID: "+resultSet.getString("id"));
 				
 				// Troca de janela
-				TelaInicial tela = new TelaInicial();
-				tela.usuarioLogadoId = registro.getIdUsuario();
-				tela.main(null);
-				this.dispose();
+				
+				mudaTela("Inicial");
 			} else {
 				JOptionPane.showMessageDialog(panel, "Nome de usuário ou senha incorreto");
 			}
@@ -55,25 +55,10 @@ public class Login extends JFrame {
 	}
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public Login(TelaController controller) {
+		super(controller);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 377, 594);
 		panel = new JPanel();
@@ -86,13 +71,13 @@ public class Login extends JFrame {
 		txtrPodeLogarPara.setBackground(UIManager.getColor("Button.darkShadow"));
 		txtrPodeLogarPara.setForeground(Color.WHITE);
 		txtrPodeLogarPara.setFont(new Font("Arial", Font.BOLD, 14));
-		txtrPodeLogarPara.setText("Pode logar para utilizar o nosso bot!\r\n\r\nCaso não tenha login,\r\nRealize seu cadastro!");
+		txtrPodeLogarPara.setText("Realize o seu login para utilizar o bot!\r\n\r\nCaso não tenha login,\r\nRealize seu cadastro!");
 		txtrPodeLogarPara.setBounds(34, 37, 291, 80);
 		panel.add(txtrPodeLogarPara);
 
-		JButton btnNewButton = new JButton("Cadastrar");
-		btnNewButton.setBounds(34, 356, 102, 23);
-		panel.add(btnNewButton);
+		JButton cadastroBtn = new JButton("Cadastrar");
+		cadastroBtn.setBounds(34, 356, 102, 23);
+		panel.add(cadastroBtn);
 
 		JButton login = new JButton("Login");
 		login.setBounds(223, 356, 102, 23);
@@ -107,6 +92,13 @@ public class Login extends JFrame {
 				} else {
 					execLogin(strUsuario, strSenha);
 				}
+			}
+		});
+		
+		cadastroBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mudaTela("Cadastro");
 			}
 		});
 
