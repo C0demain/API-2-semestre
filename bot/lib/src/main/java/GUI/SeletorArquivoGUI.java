@@ -3,18 +3,28 @@ package GUI;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import org.apache.commons.io.FileCleaner;
+
 import dao.RegistroDAO;
 import modelo.Registro;
+import utilitarios.FileCleanner;
 import utilitarios.LimpaArquivo;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Date;
+import java.util.stream.Stream;
 import java.awt.Font;
 
 
 public class SeletorArquivoGUI extends Tela implements ActionListener {
+
+	public static File arquivo;
     private JPanel MainPanel;
     private JButton button1 = new JButton("Carregar");
     private JButton button2 = new JButton("Chat");
@@ -52,14 +62,21 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
                 JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
                 int r = fileChooser.showOpenDialog(null);
                 if (r == JFileChooser.APPROVE_OPTION) {
-                    caminhoArquivo = fileChooser.getSelectedFile().getAbsolutePath();
-                    
+                	arquivo = fileChooser.getSelectedFile();
+                	
+                	caminhoArquivo = arquivo.getPath();
                     controller.adicionarArquivo(caminhoArquivo);
                     
                     nomeArquivo.setText(caminhoArquivo);
 
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
-                    LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
+//                    LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
+                    try {
+						FileCleanner.formatText(caminhoArquivo);
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                     
                     // Registro
                     long millis = System.currentTimeMillis();

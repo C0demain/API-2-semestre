@@ -48,7 +48,7 @@ public class TelaBot extends Tela implements ActionListener {
     public TelaBot(TelaController controller) {
         super(controller);
 
-
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 377, 594);
         contentPane = new JPanel();
@@ -96,14 +96,14 @@ public class TelaBot extends Tela implements ActionListener {
                     String resp = Bot.perguntar(textoPergunta);
                     historico.append("Question: " + textoPergunta + "\n");
                     historico.append("Answer: " + resp + "\n\n");
-                    resposta.setText(historico.toString());
                 } catch (RuntimeException err) {
-                    resposta.setText("Erro na leitura de arquivo");
+                	historico.append("Answer: " + "Erro na leitura de arquivo" + "\n\n");
                     System.out.println(err);
                 } catch (Exception err2) {
-                    resposta.setText("Desculpe, não consegui achar informações sobre '" + pergunta.getText() + "'");
+                	historico.append("Answer: " + "Desculpe, não consegui achar informações sobre '" + pergunta.getText() + "'");
                     System.out.println(err2);
                 }
+                resposta.setText(historico.toString());
 
             }
         });
