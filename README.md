@@ -12,7 +12,7 @@ Como parte da API do 2° semestre do curso de análise e desenvolvimento de sist
 # Cronograma
 <div align="center"> 
   
-![backlog](https://github.com/C0demain/API-2-semestre/assets/126246657/a6cbee11-4afa-4634-bce6-b2725c270e40)
+![backlog](documentosProjeto/backlog.png)
 
 </div>
 
