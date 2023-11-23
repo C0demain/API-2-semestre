@@ -29,7 +29,7 @@ public class FileCleanner {
 
 	public static List<String> arquivos = new ArrayList<String>();
 
-	public static Path formatText(String path) throws FileNotFoundException {
+	public static String formatText(String path) throws FileNotFoundException {
         //Inspired by Mateus Madeira's code in https://github.com/C0demain/API-2-semestre/blob/master/bot/lib/src/main/java/utilitarios/LimpaArquivo.java
 
 //		InputStream stream = new ByteArrayInputStream(path.getBytes());
@@ -47,19 +47,19 @@ public class FileCleanner {
             String dir = null;
 
             if (FileUtils.checkTXT(path)) {
-                dir = path.replace(".txt", "_cleaned.txt");
+                dir = path.replace(".txt", ".txt");
                 parser.parse(stream, handler, metadata, context);
                 doccontent = handler.toString();
                 System.out.println(handler.toString());
             }
             else if (FileUtils.checkPDF(path)){
-                dir = path.replace(".pdf", "_cleaned.txt");
+                dir = path.replace(".pdf", ".txt");
                 parser.parse(stream, handler, metadata, context);
                 doccontent = handler.toString();
                 System.out.println(handler.toString());
             }
             else if (FileUtils.checkDOCX(path)) {
-                dir = path.replace(".docx", "_cleaned.txt");
+                dir = path.replace(".docx", ".txt");
                 parser.parse(stream, handler, metadata, context);
                 doccontent = handler.toString();
                 System.out.println(handler.toString());
@@ -87,7 +87,7 @@ public class FileCleanner {
             content = new StringBuilder(content.toString().replace("\t", ""));
             writer.write(content.toString());
             writer.close();
-            return Path.of(dir);
+            return dir;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TikaException e) {

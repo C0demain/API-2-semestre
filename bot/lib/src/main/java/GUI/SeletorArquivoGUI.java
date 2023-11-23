@@ -65,14 +65,17 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
                 	arquivo = fileChooser.getSelectedFile();
                 	
                 	caminhoArquivo = arquivo.getPath();
-                    controller.adicionarArquivo(caminhoArquivo);
                     
                     nomeArquivo.setText(caminhoArquivo);
 
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
 //                    LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
                     try {
-						FileCleanner.formatText(caminhoArquivo);
+						caminhoArquivo = FileCleanner.formatText(caminhoArquivo);
+						//System.out.println(caminhoArquivo);
+						caminhoArquivo = LimpaArquivo.limparArquivo(caminhoArquivo);
+						//System.out.println(caminhoArquivo);
+						controller.adicionarArquivo(caminhoArquivo);
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

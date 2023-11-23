@@ -51,8 +51,9 @@ public class Bot {
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
         		.documentSplitter(DocumentSplitters.recursive(200))
                 .embeddingModel(embeddingModel)
-                .embeddingStore(embeddingStore)
+                .embeddingStore(embeddingStore)                
                 .build();
+                
         
         ingestor.ingest(documentos);
 		

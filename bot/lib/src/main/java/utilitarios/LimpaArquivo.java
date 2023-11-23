@@ -9,10 +9,12 @@ import java.nio.charset.Charset;
 
 public class LimpaArquivo {
 
-    public static void limparArquivo(String caminhoArquivo) {
-        try {
+    public static String limparArquivo(String caminhoArquivo) {
+    	String arq = "";
+    	try {
             BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo, Charset.forName("UTF8")));
             String dir = caminhoArquivo.replace(".txt", "_limpo.txt"); // Nome do arquivo limpo
+            arq = dir;
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(dir, Charset.forName("UTF8")));
             String line;
@@ -30,10 +32,11 @@ public class LimpaArquivo {
             content = new StringBuilder(content.toString().replace("\n\n", "\n"));
             content = new StringBuilder(content.toString().replace("\t", ""));
             writer.write(content.toString());
-            writer.close();
+            writer.close();           
         } catch (IOException e) {
             e.printStackTrace();
         }
+    	return arq;
     }
 
     public static void main(String[] args) {
