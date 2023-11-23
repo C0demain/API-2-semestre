@@ -19,7 +19,7 @@ public class RegistroDAO {
 	}
 
 	public void adiciona(Registro registro) {
-		String sql = "INSERT INTO registros(id_usuario, descricao, data) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO registro(id_usuario, descricao, data) VALUES(?, ?, ?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
@@ -36,12 +36,12 @@ public class RegistroDAO {
 	
 	public List<Registro> getAll(){
 		List<Registro> registros = new ArrayList<Registro>();
-		String sql = "SELECT * FROM registros";
+		String sql = "SELECT * FROM registro";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			ResultSet resultSet = stmt.executeQuery();
 			while(resultSet.next()) {
-				Registro reg = new Registro(resultSet.getInt("id_usuario"), resultSet.getInt("id_usuario"), resultSet.getString("descricao"), resultSet.getDate("data"));
+				Registro reg = new Registro(resultSet.getInt("id"), resultSet.getInt("id_usuario"), resultSet.getString("descricao"), resultSet.getDate("data"));
 				registros.add(reg);
 			}
 			

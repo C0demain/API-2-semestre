@@ -9,9 +9,9 @@ usuario varchar(50) not null unique,
 cpf varchar(14) not null unique,
 senha varchar(255) not null);
 
-create table registro_usuario
+create table registro
 (id int primary key auto_increment,
 id_usuario INT NOT NULL,
-data_hora_acesso DATETIME NOT NULL,
+data DATETIME NOT NULL,
 descricao text,
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id) );
