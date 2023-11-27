@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import dao.UsuarioDAO;
@@ -14,6 +15,8 @@ import modelo.Registro;
 import GUI.Login;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +34,12 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Window.Type;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.text.MaskFormatter;
 
 public class Cadastro extends Tela {
 
@@ -47,38 +56,28 @@ public class Cadastro extends Tela {
 	 */
 	public Cadastro(TelaController controller) {
 		super(controller);
-		setTitle("Login");
+		setResizable(false);
+		setTitle("Cadastro");
 		setForeground(new Color(128, 128, 128));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 377, 594);
+		setBounds(100, 100, 488, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(0, 0, 51));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("Para se cadastrar, basta preencher todos os campos.");
-		lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setBounds(10, 64, 339, 14);
-		contentPane.add(lblNewLabel_3);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel.setBounds(44, 42, 380, 476);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
-		JLabel lblNewLabel_4 = new JLabel("Cadastro:");
-		lblNewLabel_4.setBackground(new Color(255, 255, 255));
-		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
-		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setBounds(10, 11, 150, 58);
-		contentPane.add(lblNewLabel_4);
-		
-		usuario = new JTextField();
-		usuario.setBounds(10, 220, 241, 23);
-		contentPane.add(usuario);
-		usuario.setColumns(10);
-		
-		JButton Entrar = new JButton("Cadastrar-se");
-		Entrar.setBounds(202, 492, 119, 23);
+		JButton Entrar = new JButton("Cadastrar");
+		Entrar.setBorder(new LineBorder(new Color(0, 0, 0)));
+		Entrar.setBounds(58, 416, 127, 33);
+		panel.add(Entrar);
 		Entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -107,55 +106,91 @@ public class Cadastro extends Tela {
 								
 			}
 		});
-		Entrar.setFont(new Font("Arial", Font.PLAIN, 11));
-		Entrar.setBackground(Color.LIGHT_GRAY);
+		Entrar.setFont(new Font("Arial", Font.BOLD, 15));
+		Entrar.setBackground(SystemColor.text);
 		Entrar.setForeground(Color.BLACK);
-		contentPane.add(Entrar);
+		
+		JLabel lblNewLabel_4 = new JLabel("Realize seu Cadastro\r\n");
+		lblNewLabel_4.setBounds(58, 10, 233, 50);
+		panel.add(lblNewLabel_4);
+		lblNewLabel_4.setBackground(new Color(255, 255, 255));
+		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewLabel_4.setForeground(new Color(0, 0, 0));
+		
+		JLabel lblNewLabel_1 = new JLabel("Nome\r\n");
+		lblNewLabel_1.setBounds(58, 67, 89, 14);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		nome = new JTextField();
-		nome.setBounds(10, 144, 241, 23);
-		contentPane.add(nome);
-		nome.setColumns(10);
+		nome.setBorder(new LineBorder(null));
+		nome.setSelectedTextColor(new Color(192, 192, 192));
+		nome.setFont(new Font("Arial", Font.PLAIN, 15));
+		nome.setBounds(58, 106, 241, 23);
+		panel.add(nome);
+		nome.setColumns(15);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome :");
-		lblNewLabel_1.setBounds(10, 119, 89, 14);
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Usuário :");
-		lblNewLabel_2.setBounds(10, 195, 75, 14);
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 12));
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Senha :");
-		lblNewLabel_2_1.setBounds(10, 347, 46, 14);
-		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Arial", Font.BOLD, 12));
-		contentPane.add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Cpf :");
-		lblNewLabel_1_1.setBounds(10, 271, 89, 14);
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-		contentPane.add(lblNewLabel_1_1);
+		usuario = new JTextField();
+		usuario.setBorder(new LineBorder(null));
+		usuario.setBounds(58, 184, 241, 23);
+		panel.add(usuario);
+		usuario.setFont(new Font("Arial", Font.PLAIN, 15));
+		usuario.setColumns(10);
 		
 		cpf = new JTextField();
-		cpf.setBounds(10, 296, 241, 23);
+		cpf.setBorder(new LineBorder(null));
+		cpf.setBounds(58, 256, 241, 23);
+		panel.add(cpf);
+		cpf.setFont(new Font("Arial", Font.PLAIN, 15));
 		cpf.setColumns(10);
-		contentPane.add(cpf);
+
+	    senha = new JPasswordField(); // Transformando em um campo de senha
+	    senha.setBorder(new LineBorder(null));
+	    senha.setBounds(58, 332, 241, 23);
+	    panel.add(senha);
+	    senha.setFont(new Font("Arial", Font.PLAIN, 15));
+	    
+	    JButton mostrarSenha = new JButton("Mostrar");
+	    mostrarSenha.setAutoscrolls(true);
+	    mostrarSenha.setBackground(new Color(255, 255, 255));
+	    mostrarSenha.setBorder(new LineBorder(new Color(0, 0, 0)));
+	    mostrarSenha.setFont(new Font("Arial", Font.BOLD, 10));
+        mostrarSenha.setBounds(58, 365, 85, 23);
+        panel.add(mostrarSenha);
+
+        mostrarSenha.addActionListener(new ActionListener() {
+            boolean senhaVisivel = false;
+
+            public void actionPerformed(ActionEvent e) {
+                if (senhaVisivel) {
+                    ((JPasswordField) senha).setEchoChar('\u2022'); // Torna a senha oculta
+                    mostrarSenha.setText("Mostrar");
+                } else {
+                    ((JPasswordField) senha).setEchoChar((char) 0); // Torna a senha visível
+                    mostrarSenha.setText("Ocultar");
+                }
+                senhaVisivel = !senhaVisivel; // Alterna entre visível e oculta
+            }
+        });
+    
 		
-		senha = new JTextField();
-		senha.setBounds(10, 372, 241, 23);
-		senha.setColumns(10);
-		contentPane.add(senha);
+		JLabel lblNewLabel_2_1 = new JLabel("Senha");
+		lblNewLabel_2_1.setBounds(58, 306, 102, 14);
+		panel.add(lblNewLabel_2_1);
+		lblNewLabel_2_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2_1.setFont(new Font("Arial", Font.BOLD, 15));
 		
-		JLabel lblNewLabel = new JLabel("Entrar");
-		lblNewLabel.setBounds(0, 0, 359, 552);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 10));
-		lblNewLabel.setBackground(Color.GRAY);
-		lblNewLabel.setIcon(new ImageIcon(Cadastro.class.getResource("img.png")));
-		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel_1_1 = new JLabel("CPF");
+		lblNewLabel_1_1.setBounds(58, 230, 89, 14);
+		panel.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		JLabel lblNewLabel_2 = new JLabel("Usuário");
+		lblNewLabel_2.setBounds(58, 152, 75, 14);
+		panel.add(lblNewLabel_2);
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
 	}
 }
