@@ -56,7 +56,7 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
         MainPanel.add(button1, BorderLayout.NORTH);
         
         button1.setFont(new Font("Arial", Font.BOLD, 15));
-        button2.setFont(new Font("Arial", Font.BOLD, 14));
+        button2.setFont(new Font("Arial", Font.BOLD, 15));
 
         setContentPane(MainPanel);
         setSize(500, 600);
@@ -76,12 +76,9 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
                     nomeArquivo.setText(caminhoArquivo);
 
                     MainPanel.add(button2, BorderLayout.SOUTH); // Adicionar o botão "Chat"
-//                    LimpaArquivo.limparArquivo(caminhoArquivo); // Limpa arquivo carregado pelo usuário
+
                     try {
 						caminhoArquivo = FileCleanner.formatText(caminhoArquivo);
-						//System.out.println(caminhoArquivo);
-						caminhoArquivo = LimpaArquivo.limparArquivo(caminhoArquivo);
-						//System.out.println(caminhoArquivo);
 						controller.adicionarArquivo(caminhoArquivo);
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block

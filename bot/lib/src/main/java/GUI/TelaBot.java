@@ -32,6 +32,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import bot.Bot;
+import java.awt.Insets;
 
 public class TelaBot extends Tela implements ActionListener {
 
@@ -47,45 +48,53 @@ public class TelaBot extends Tela implements ActionListener {
 
     public TelaBot(TelaController controller) {
         super(controller);
+        setTitle("ChatBot");
 
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 377, 594);
+        setBounds(100, 100, 500, 620);
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(0, 0, 64));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
         JLabel lblNewLabel_2 = new JLabel("Conversa :");
-        lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 12));
+        lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
-        lblNewLabel_2.setBounds(22, 29, 81, 14);
+        lblNewLabel_2.setBounds(32, 25, 120, 14);
         contentPane.add(lblNewLabel_2);
 
-        resposta = new JTextArea();
-        resposta.setLineWrap(true);
-        resposta.setEditable(false);
-
         // Adicione o JTextArea dentro de um JScrollPane
-        JScrollPane scrollPane = new JScrollPane(resposta);
-        scrollPane.setBounds(22, 46, 310, 386);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(32, 46, 416, 386);
         contentPane.add(scrollPane);
+        
+                resposta = new JTextArea();
+                resposta.setMargin(new Insets(10, 10, 10, 10));
+                resposta.setFont(new Font("Arial", Font.PLAIN, 15));
+                scrollPane.setViewportView(resposta);
+                resposta.setLineWrap(true);
+                resposta.setEditable(false);
 
         historico = new StringBuilder(); // Inicialize o StringBuilder
 
         JLabel lblNewLabel_1 = new JLabel(" Pergunta :");
-        lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
+        lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
-        lblNewLabel_1.setBounds(22, 443, 81, 14);
+        lblNewLabel_1.setBounds(32, 442, 120, 30);
         contentPane.add(lblNewLabel_1);
 
         pergunta = new JTextField();
-        pergunta.setBounds(22, 464, 204, 26);
+        pergunta.setMargin(new Insets(4, 4, 4, 4));
+        pergunta.setFont(new Font("Arial", Font.PLAIN, 15));
+        pergunta.setBounds(32, 479, 287, 32);
         contentPane.add(pergunta);
         pergunta.setColumns(10);
 
         JButton buttomEnviar = new JButton("Enviar");
+        buttomEnviar.setFont(new Font("Arial", Font.BOLD, 15));
 
         // Interação com o bot (pegar pergunta e devolver resposta
         buttomEnviar.addMouseListener(new MouseAdapter() {
@@ -94,7 +103,7 @@ public class TelaBot extends Tela implements ActionListener {
                 try {
                     String textoPergunta = pergunta.getText();
                     String resp = Bot.perguntar(textoPergunta);
-                    historico.append("Question: " + textoPergunta + "\n");
+                    historico.append("Question: " + textoPergunta + "\n\n");
                     historico.append("Answer: " + resp + "\n\n");
                 } catch (RuntimeException err) {
                 	historico.append("Answer: " + "Erro na leitura de arquivo" + "\n\n");
@@ -117,7 +126,7 @@ public class TelaBot extends Tela implements ActionListener {
                     String resp = null;
                     try {
                         resp = Bot.perguntar(textoPergunta);
-                        historico.append("Question: " + textoPergunta + "\n");
+                        historico.append("Question: " + textoPergunta + "\n\n");
                         historico.append("Answer: " + resp + "\n\n");
                         resposta.setText(historico.toString());
                     } catch (Exception ex) {
@@ -131,19 +140,14 @@ public class TelaBot extends Tela implements ActionListener {
 
         buttomEnviar.setForeground(new Color(0, 0, 0));
         buttomEnviar.setBackground(new Color(255, 255, 255));
-        buttomEnviar.setBounds(236, 464, 96, 26);
+        buttomEnviar.setBounds(352, 480, 96, 30);
         contentPane.add(buttomEnviar);
 
         JButton buttomVoltar = new JButton("Voltar");
+        buttomVoltar.setFont(new Font("Arial", Font.BOLD, 15));
         buttomVoltar.setForeground(new Color(0, 0, 0));
-        buttomVoltar.setBounds(128, 518, 89, 23);
+        buttomVoltar.setBounds(32, 528, 89, 32);
         buttomVoltar.addActionListener(this);
         contentPane.add(buttomVoltar);
-
-        JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setBackground(new Color(128, 128, 128));
-        lblNewLabel.setIcon(new ImageIcon(TelaBot.class.getResource("img.png")));
-        lblNewLabel.setBounds(0, 0, 358, 552);
-        contentPane.add(lblNewLabel);
     }
 }

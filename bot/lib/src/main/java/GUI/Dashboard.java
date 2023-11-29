@@ -54,7 +54,6 @@ public class Dashboard extends Tela {
         jMenu2 = new javax.swing.JMenu();
         JButton voltarButton = new javax.swing.JButton("Voltar");
         voltarButton.setBackground(new Color(255, 255, 255));
-        voltarButton.setBorder(new LineBorder(new Color(0, 0, 0)));
         voltarButton.setFont(new Font("Arial", Font.BOLD, 15));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

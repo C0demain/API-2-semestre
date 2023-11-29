@@ -76,7 +76,6 @@ public class Cadastro extends Tela {
 		panel.setLayout(null);
 		
 		JButton Entrar = new JButton("Cadastrar");
-		Entrar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		Entrar.setBounds(58, 416, 127, 33);
 		panel.add(Entrar);
 		Entrar.addActionListener(new ActionListener() {

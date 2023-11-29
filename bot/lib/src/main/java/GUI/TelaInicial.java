@@ -100,7 +100,6 @@ public class TelaInicial extends Tela implements ActionListener{
 		buttomArquivos.setBackground(new Color(255, 255, 255));
 		buttomArquivos.setBounds(45, 330, 137, 43);
 		panel.add(buttomArquivos);
-		buttomArquivos.setBorder(new LineBorder(new Color(0, 0, 0)));
 		buttomArquivos.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		buttomChat = new JButton("Chat");
@@ -108,13 +107,11 @@ public class TelaInicial extends Tela implements ActionListener{
 		buttomChat.setBounds(211, 330, 137, 43);
 		panel.add(buttomChat);
 		buttomChat.setFont(new Font("Arial", Font.BOLD, 15));
-		buttomChat.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JButton registroButton = new JButton("Registro");
 		registroButton.setBackground(new Color(255, 255, 255));
 		registroButton.setBounds(129, 402, 129, 34);
 		panel.add(registroButton);
-		registroButton.setBorder(new LineBorder(new Color(0, 0, 0)));
 		registroButton.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		lblNewLabel = new JLabel("Parrot AI");

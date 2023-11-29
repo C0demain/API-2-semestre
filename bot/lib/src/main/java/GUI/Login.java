@@ -104,14 +104,12 @@ public class Login extends Tela {
 						
 								JButton cadastroBtn = new JButton("Cadastrar");
 								cadastroBtn.setBackground(new Color(255, 255, 255));
-								cadastroBtn.setBorder(new LineBorder(new Color(0, 0, 0)));
 								cadastroBtn.setBounds(116, 396, 136, 34);
 								panel_1.add(cadastroBtn);
 								cadastroBtn.setFont(new Font("Arial", Font.BOLD, 15));
 								
 										JButton login = new JButton("Login");
 										login.setBackground(new Color(255, 255, 255));
-										login.setBorder(new LineBorder(new Color(0, 0, 0)));
 										login.setBounds(116, 293, 136, 34);
 										panel_1.add(login);
 										login.setFont(new Font("Arial", Font.BOLD, 15));
