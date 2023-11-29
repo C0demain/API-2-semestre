@@ -18,6 +18,12 @@ import modelo.Usuario;
 import modelo.Registro;
 
 import GUI.TelaInicial;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.LineBorder;
 
 
 public class Dashboard extends Tela {
@@ -30,6 +36,9 @@ public class Dashboard extends Tela {
      */
     public Dashboard(TelaController controller) {
     	super(controller);
+    	setTitle("Registro");
+    	setResizable(false);
+    	getContentPane().setBackground(new Color(0, 0, 64));
         initComponents();
     }
 
@@ -44,6 +53,9 @@ public class Dashboard extends Tela {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         JButton voltarButton = new javax.swing.JButton("Voltar");
+        voltarButton.setBackground(new Color(255, 255, 255));
+        voltarButton.setBorder(new LineBorder(new Color(0, 0, 0)));
+        voltarButton.setFont(new Font("Arial", Font.BOLD, 15));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
@@ -87,23 +99,25 @@ public class Dashboard extends Tela {
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(voltarButton)
-                .addGap(37, 37, 37))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addGap(32)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(voltarButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(voltarButton)
-                .addGap(20, 20, 20))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap(31, Short.MAX_VALUE)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 312, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(voltarButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

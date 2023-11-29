@@ -60,17 +60,18 @@ public class Cadastro extends Tela {
 		setTitle("Cadastro");
 		setForeground(new Color(128, 128, 128));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 488, 600);
+		setBounds(100, 100, 500, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 51));
+		contentPane.setBackground(new Color(0, 0, 64));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setAutoscrolls(true);
+		panel.setBackground(SystemColor.menu);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel.setBounds(44, 42, 380, 476);
+		panel.setBounds(44, 42, 388, 476);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -110,11 +111,11 @@ public class Cadastro extends Tela {
 		Entrar.setBackground(SystemColor.text);
 		Entrar.setForeground(Color.BLACK);
 		
-		JLabel lblNewLabel_4 = new JLabel("Realize seu Cadastro\r\n");
-		lblNewLabel_4.setBounds(58, 10, 233, 50);
+		JLabel lblNewLabel_4 = new JLabel("Cadastro\r\n");
+		lblNewLabel_4.setBounds(129, 10, 127, 50);
 		panel.add(lblNewLabel_4);
 		lblNewLabel_4.setBackground(new Color(255, 255, 255));
-		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 25));
 		lblNewLabel_4.setForeground(new Color(0, 0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome\r\n");
@@ -145,34 +146,11 @@ public class Cadastro extends Tela {
 		cpf.setFont(new Font("Arial", Font.PLAIN, 15));
 		cpf.setColumns(10);
 
-	    senha = new JPasswordField(); // Transformando em um campo de senha
+	    senha = new JPasswordField(); 
 	    senha.setBorder(new LineBorder(null));
 	    senha.setBounds(58, 332, 241, 23);
 	    panel.add(senha);
 	    senha.setFont(new Font("Arial", Font.PLAIN, 15));
-	    
-	    JButton mostrarSenha = new JButton("Mostrar");
-	    mostrarSenha.setAutoscrolls(true);
-	    mostrarSenha.setBackground(new Color(255, 255, 255));
-	    mostrarSenha.setBorder(new LineBorder(new Color(0, 0, 0)));
-	    mostrarSenha.setFont(new Font("Arial", Font.BOLD, 10));
-        mostrarSenha.setBounds(58, 365, 85, 23);
-        panel.add(mostrarSenha);
-
-        mostrarSenha.addActionListener(new ActionListener() {
-            boolean senhaVisivel = false;
-
-            public void actionPerformed(ActionEvent e) {
-                if (senhaVisivel) {
-                    ((JPasswordField) senha).setEchoChar('\u2022'); // Torna a senha oculta
-                    mostrarSenha.setText("Mostrar");
-                } else {
-                    ((JPasswordField) senha).setEchoChar((char) 0); // Torna a senha visível
-                    mostrarSenha.setText("Ocultar");
-                }
-                senhaVisivel = !senhaVisivel; // Alterna entre visível e oculta
-            }
-        });
     
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Senha");

@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.sql.Date;
 import java.util.stream.Stream;
 import java.awt.Font;
+import java.awt.Color;
 
 
 public class SeletorArquivoGUI extends Tela implements ActionListener {
@@ -35,6 +36,8 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
 
     public SeletorArquivoGUI(TelaController controller) {
     	super(controller);
+    	setTitle("Seletor de Arquivo");
+    	setResizable(false);
     	
     	button2.addActionListener(new ActionListener() {
     	    @Override
@@ -44,15 +47,19 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
     	});
 
         MainPanel = new JPanel(new BorderLayout());
-        nomeArquivo.setFont(new Font("Arial", Font.BOLD, 14));
+        nomeArquivo.setOpaque(true);
+        nomeArquivo.setForeground(new Color(255, 255, 255));
+        nomeArquivo.setBackground(new Color(0, 0, 64));
+        nomeArquivo.setFont(new Font("Arial", Font.BOLD, 20));
         MainPanel.add(nomeArquivo, BorderLayout.CENTER);
+        button1.setForeground(new Color(0, 0, 64));
         MainPanel.add(button1, BorderLayout.NORTH);
         
-        button1.setFont(new Font("Arial", Font.BOLD, 14));
+        button1.setFont(new Font("Arial", Font.BOLD, 15));
         button2.setFont(new Font("Arial", Font.BOLD, 14));
 
         setContentPane(MainPanel);
-        setSize(376, 594);
+        setSize(500, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         button1.addActionListener(new ActionListener() {
