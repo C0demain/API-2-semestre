@@ -40,6 +40,7 @@ import java.awt.Window.Type;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.text.MaskFormatter;
+import java.awt.Dialog.ModalExclusionType;
 
 public class Cadastro extends Tela {
 
@@ -56,6 +57,7 @@ public class Cadastro extends Tela {
 	 */
 	public Cadastro(TelaController controller) {
 		super(controller);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Cadastro.class.getResource("/images/parrot.png")));
 		setResizable(false);
 		setTitle("Cadastro");
 		setForeground(new Color(128, 128, 128));
@@ -169,5 +171,19 @@ public class Cadastro extends Tela {
 		panel.add(lblNewLabel_2);
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(195, 416, 127, 33); 
+		panel.add(btnVoltar);
+		btnVoltar.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        
+		        mudaTela("Login");
+		    }
+		});
+		btnVoltar.setFont(new Font("Arial", Font.BOLD, 15));
+		btnVoltar.setBackground(SystemColor.text);
+		btnVoltar.setForeground(Color.BLACK);
+
 	}
 }

@@ -33,6 +33,7 @@ import javax.swing.DropMode;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 
 public class TelaInicial extends Tela implements ActionListener{
@@ -40,10 +41,12 @@ public class TelaInicial extends Tela implements ActionListener{
 	private JButton buttomArquivos;
 	private JPanel panel;
 	private JLabel lblNewLabel;
-	private JTextPane txtpnChatbotCapazDe;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 	
 	public TelaInicial(TelaController controller) {
 		super(controller);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInicial.class.getResource("/images/parrot.png")));
 		setTitle("Tela Inicial");
 		setResizable(false);
 		getContentPane().setBackground(new Color(0, 0, 64));
@@ -85,17 +88,6 @@ public class TelaInicial extends Tela implements ActionListener{
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JTextPane txtpnSeA = new JTextPane();
-		txtpnSeA.setEditable(false);
-		txtpnSeA.setBounds(30, 159, 342, 60);
-		panel.add(txtpnSeA);
-		txtpnSeA.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-		txtpnSeA.setMinimumSize(new Dimension(8, 6));
-		txtpnSeA.setFont(new Font("Arial", Font.PLAIN, 15));
-		txtpnSeA.setBackground(SystemColor.menu);
-		txtpnSeA.setForeground(new Color(0, 0, 0));
-		txtpnSeA.setText("- Selecione 'Arquivos' para carregar um arquivo.\r\n");
-		
 		buttomArquivos = new JButton("Arquivos");
 		buttomArquivos.setBackground(new Color(255, 255, 255));
 		buttomArquivos.setBounds(45, 330, 137, 43);
@@ -119,20 +111,20 @@ public class TelaInicial extends Tela implements ActionListener{
 		lblNewLabel.setBounds(45, 27, 161, 43);
 		panel.add(lblNewLabel);
 		
-		txtpnChatbotCapazDe = new JTextPane();
-		txtpnChatbotCapazDe.setEditable(false);
-		txtpnChatbotCapazDe.setText("- ChatBot capaz de ler e responder perguntas baseadas em um arquivo PDF ou TXT.");
-		txtpnChatbotCapazDe.setMinimumSize(new Dimension(8, 6));
-		txtpnChatbotCapazDe.setForeground(Color.BLACK);
-		txtpnChatbotCapazDe.setFont(new Font("Arial", Font.PLAIN, 15));
-		txtpnChatbotCapazDe.setBackground(SystemColor.menu);
-		txtpnChatbotCapazDe.setBounds(30, 99, 326, 60);
-		panel.add(txtpnChatbotCapazDe);
-		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
 		separator.setBounds(45, 80, 276, 3);
 		panel.add(separator);
+		
+		lblNewLabel_1 = new JLabel("- Selecione 'Arquivos' para carregar um arquivo.\r\n");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(29, 101, 345, 24);
+		panel.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("- Selecione 'Chat' para ir direto para o chatbot.");
+		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(29, 143, 345, 24);
+		panel.add(lblNewLabel_2);
 		registroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mudaTela("Dashboard"); // Vai pra tela Dashboard

@@ -48,6 +48,7 @@ public class TelaBot extends Tela implements ActionListener {
 
     public TelaBot(TelaController controller) {
         super(controller);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaBot.class.getResource("/images/parrot.png")));
         setTitle("ChatBot");
 
         setResizable(false);
@@ -149,5 +150,22 @@ public class TelaBot extends Tela implements ActionListener {
         buttomVoltar.setBounds(32, 528, 89, 32);
         buttomVoltar.addActionListener(this);
         contentPane.add(buttomVoltar);
+        
+    
+        JButton buttomLimpar = new JButton("Limpar");
+        buttomLimpar.setFont(new Font("Arial", Font.BOLD, 15));
+        buttomLimpar.setForeground(new Color(0, 0, 0));
+        buttomLimpar.setBounds(150, 528, 89, 32);
+        contentPane.add(buttomLimpar);
+
+        // Limpar
+        buttomLimpar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resposta.setText(""); // Limpa a caixa de conversa
+                historico.setLength(0); // Limpa o historico
+                pergunta.setText("");  //Limpa a caixa de pergunta
+            }
+        });
+
     }
 }

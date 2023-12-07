@@ -21,6 +21,7 @@ import java.sql.Date;
 import java.util.stream.Stream;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 
 public class SeletorArquivoGUI extends Tela implements ActionListener {
@@ -36,6 +37,7 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
 
     public SeletorArquivoGUI(TelaController controller) {
     	super(controller);
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(SeletorArquivoGUI.class.getResource("/images/parrot.png")));
     	setTitle("Seletor de Arquivo");
     	setResizable(false);
     	
