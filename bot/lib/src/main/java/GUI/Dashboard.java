@@ -37,7 +37,7 @@ public class Dashboard extends Tela {
      */
     public Dashboard(TelaController controller) {
     	super(controller);
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard.class.getResource("/images/parrot.png")));
+    	//setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard.class.getResource("/images/parrot.png")));
     	setTitle("Registro");
     	setResizable(false);
     	getContentPane().setBackground(new Color(0, 0, 64));

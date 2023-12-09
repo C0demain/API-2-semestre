@@ -37,7 +37,7 @@ public class SeletorArquivoGUI extends Tela implements ActionListener {
 
     public SeletorArquivoGUI(TelaController controller) {
     	super(controller);
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(SeletorArquivoGUI.class.getResource("/images/parrot.png")));
+    	//setIconImage(Toolkit.getDefaultToolkit().getImage(SeletorArquivoGUI.class.getResource("/images/parrot.png")));
     	setTitle("Seletor de Arquivo");
     	setResizable(false);
     	

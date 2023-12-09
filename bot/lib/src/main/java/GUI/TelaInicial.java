@@ -46,7 +46,7 @@ public class TelaInicial extends Tela implements ActionListener{
 	
 	public TelaInicial(TelaController controller) {
 		super(controller);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInicial.class.getResource("/images/parrot.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInicial.class.getResource("/images/parrot.png")));
 		setTitle("Tela Inicial");
 		setResizable(false);
 		getContentPane().setBackground(new Color(0, 0, 64));

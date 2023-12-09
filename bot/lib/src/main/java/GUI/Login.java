@@ -60,7 +60,7 @@ public class Login extends Tela {
 	 */
 	public Login(TelaController controller) {
 		super(controller);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/parrot.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/parrot.png")));
 		setResizable(false);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -48,7 +48,7 @@ public class TelaBot extends Tela implements ActionListener {
 
     public TelaBot(TelaController controller) {
         super(controller);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(TelaBot.class.getResource("/images/parrot.png")));
+        //setIconImage(Toolkit.getDefaultToolkit().getImage(TelaBot.class.getResource("/images/parrot.png")));
         setTitle("ChatBot");
 
         setResizable(false);

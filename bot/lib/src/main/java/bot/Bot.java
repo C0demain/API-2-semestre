@@ -31,7 +31,7 @@ import java.io.File;
 public class Bot {
 	
 	//HuggingFace API
-    public static final String HF_API_KEY = "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";
+    public static final String HF_API_KEY = "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";
     private static List<Document> documentos = new ArrayList<Document>();
 	
 	public static String perguntar(String pergunta) throws Exception {

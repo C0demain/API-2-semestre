@@ -57,7 +57,7 @@ public class Cadastro extends Tela {
 	 */
 	public Cadastro(TelaController controller) {
 		super(controller);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Cadastro.class.getResource("/images/parrot.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Cadastro.class.getResource("/images/parrot.png")));
 		setResizable(false);
 		setTitle("Cadastro");
 		setForeground(new Color(128, 128, 128));
